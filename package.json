@@ -6,7 +6,7 @@
   "scripts": {
     "readme": "egrep -v '^    ' < index.coffee.md > README.md",
     "prepublish": "coffee -c index.coffee.md",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "vows test/* --spec"
   },
   "repository": {
     "type": "git",
@@ -19,5 +19,9 @@
   "license": "Public Domain",
   "bugs": {
     "url": "https://github.com/shimaore/node-opensips/issues"
+  },
+  "devDependencies": {
+    "vows": "~0.7.0",
+    "should": "~2.0.2"
   }
 }
