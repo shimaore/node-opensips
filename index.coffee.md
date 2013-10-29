@@ -40,6 +40,10 @@ modparams("db_http","row_delimiter","\n")
         # Note: This requires opensips to be started in UTC, assuming
         #       toISOString() outputs using UTC (which it does in Node.js 0.4.11).
         #       Our script ccnq3-opensips.postinst makes sure this is the case.
+
+This module also assumes that OpenSIPS is started in the UTC timezone.
+(Using `TZ=UTC` in the startup script should accomplish this.)
+
         return d.toISOString().replace 'T', ' '
 
       # string, blob, ...
