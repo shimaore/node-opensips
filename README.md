@@ -1,6 +1,13 @@
 A toolbox for OpenSIPS
 ======================
 
+Install
+-------
+
+```
+npm install opensips
+```
+
 `db_http` module helpers
 ------------------------
 
