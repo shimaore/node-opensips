@@ -1,0 +1,23 @@
+{
+  "name": "opensips",
+  "version": "0.1.0",
+  "description": "Tools for OpenSIPS management",
+  "main": "index.js",
+  "scripts": {
+    "readme": "egrep -v '^    ' < index.coffee.md > README.md",
+    "prepublish": "coffee -c index.coffee.md",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "github.com/shimaore/node-opensips.git"
+  },
+  "keywords": [
+    "OpenSIPS"
+  ],
+  "author": "Stephane Alnet <stephane@shimaore.net>",
+  "license": "Public Domain",
+  "bugs": {
+    "url": "https://github.com/shimaore/node-opensips/issues"
+  }
+}
