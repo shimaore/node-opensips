@@ -39,7 +39,7 @@ However since UDP has no way to indicate end-of-stream, simply assume we're done
             timeout = null
 
             client.on 'message', (msg,rinfo) ->
-              buffer = Buffer.concat response, msg
+              buffer = Buffer.concat [response, msg]
 
               clearTimeout timeout
               timeout = setTimeout on_timeout, 2000
