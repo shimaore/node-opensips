@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "readme": "egrep -v '^    ' < index.coffee.md > README.md",
-    "prepublish": "coffee -c index.coffee.md",
+    "prepublish": "coffee -c index.coffee.md mi.coffee.md",
     "test": "vows test/* --spec"
   },
   "repository": {

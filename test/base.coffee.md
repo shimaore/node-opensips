@@ -61,4 +61,3 @@ Tests for `opensips` module
           # assert.equal typeof topic, 'function'
 
     suite.export(module)
-
