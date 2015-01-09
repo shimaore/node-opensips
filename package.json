@@ -23,5 +23,12 @@
   "devDependencies": {
     "vows": "~0.7.0",
     "should": "~2.0.2"
+  },
+  "homepage": "https://github.com/shimaore/node-opensips",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "bluebird": "^2.6.2"
   }
 }
