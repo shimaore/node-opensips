@@ -1,6 +1,7 @@
 OpenSIPS MI tooling
 ===================
 
+    class OpensipsTimeoutError extends Error
     class OpensipsStatusError extends Error
     class OpensipsSyntaxError extends Error
 
@@ -21,21 +22,32 @@ If this isn't the case then this code needs to be rewritten.
             client.on 'error', (error) ->
               reject error
 
+            response = new Buffer 0
+
+It is an error if our request receives no response packet.
+
+            initial_timeout = ->
+              client.close()
+              reject new OpensipsTimeoutError 'timeout'
+
+However since UDP has no way to indicate end-of-stream, simply assume we're done if we are no longer receiving responses.
+
             on_timeout = ->
               client.close()
-              reject new Error "#{pkg.name}: mi_udp: timeout on #{host} #{port}."
+              resolve response
 
             timeout = null
 
             client.on 'message', (msg,rinfo) ->
+              buffer = Buffer.concat response, msg
+
               clearTimeout timeout
-              client.close()
-              resolve msg
+              timeout = setTimeout on_timeout, 2000
 
             message = new Buffer(command)
             client.sendAsync message, 0, message.length, port, host
             .then ->
-              timeout = setTimeout on_timeout, 2000
+              timeout = setTimeout initial_timeout, 2000
 
           catch error
             reject error
@@ -135,6 +147,7 @@ Parse the new content
 
         return body
 
+      OpensipsTimeoutError: OpensipsTimeoutError
       OpensipsStatusError: OpensipsStatusError
       OpensipsSyntaxError: OpensipsSyntaxError
 
