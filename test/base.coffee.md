@@ -43,18 +43,15 @@ Tests for `opensips` module
             the.value.should.equal '42'
 
       'contains `unquote_params`':
-        topic: opensips.unquote_params
         'which is a function': (topic) ->
-          # assert.equal typeof topic, 'function'
+          opensips.unquote_params.should.type 'function'
 
       'contains `line`':
-        topic: opensips.line
         'which is a function': (topic) ->
-          # assert.equal typeof topic, 'function'
+          opensips.line.should.type 'function'
       'contains `header`':
-        topic: opensips.header
         'which is a function': (topic) ->
-          # assert.equal typeof topic, 'function'
+          opensips.header.should.type 'function'
       'contains `location_types`':
         topic: opensips.location_types
         'which is a function': (topic) ->
